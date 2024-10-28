@@ -1,1 +1,1 @@
-# 36DaysOfDevOps
+# 30DaysOfDevOps

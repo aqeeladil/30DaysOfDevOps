@@ -1,5 +1,6 @@
 # Topic __ Shell Scripting
 
+<br>
 
 ## Operating System
 - OS is an intermediary between your software application (python, jenkins, chrome) and hardware components (cpu, ram, io) 
@@ -7,7 +8,8 @@
 - Kernel is the heart of OS. It performs following duties. Device management, Memory management, Process management, Handling system calls. 
 
 
-### Linux useful commands
+**Linux useful commands**
+
 - ls
 - ls -la 
 - ls -ltr

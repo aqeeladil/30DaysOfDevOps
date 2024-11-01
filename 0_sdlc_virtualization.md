@@ -1,5 +1,6 @@
-# Topic ___ DevOps, SDLC, Virtualization, Ec2
+# DevOps, SDLC, Virtualization, Ec2
 
+<br>
 
 ### What is DevOps (SDLC in an efficient manner)
 1. Improving Delivery time
@@ -8,7 +9,7 @@
 4. Continuous Monitoring (observability) (to maintain the quality) 
 5. Continuous Testing
 
-### DevOps is a culture/practice or a way of working. It adds efficiency to the organizations ability to deliver the application.
+**DevOps is a culture/practice or a way of working. It adds efficiency to the organizations ability to deliver the application.**
 - Devops is the process of improving the application/script delivery (or making your delivery quicker) by ensuring that there is proper automation, ensuring that the quality is in place, that you have set up adequate monitoring, and you have continuous testing.
 
 ### Why DevOps?
@@ -26,9 +27,9 @@
 4. Configuration management using Ansible. 
 5. Infrastructure Automation using Terraform
 
+<br><br>
 
 #####################################################################################
-
 
 ### Core Phases of SDLC (The end goal is to deliver a high-quality product)
 - Design 
@@ -55,12 +56,10 @@
    - Application promoted to the production server for customer use
 
 
-### For a DevOps Engineer, Building, Testing & Deployment phases are the most important ones. Here you can bring automation.
+**For a DevOps Engineer, Building, Testing & Deployment phases are the most important ones. Here you can bring automation.**
 
-
-
+<br><br>
 ####################################################################################
-
 
 ### Project Management
 There are different project management models of Software Development.
@@ -70,10 +69,8 @@ There are different project management models of Software Development.
    - These days Agile model is popular in the industry.
    - Delivering the product in short springs.
 
-
-
+<br><br>
 ######################################################################################
-
 
 ### Hypervisor
 - We install a hypervisor on a physical server.
@@ -89,7 +86,7 @@ There are different project management models of Software Development.
 ### Scripting
 - Here we can automate this process of creating VM's with the help of a script. And this script will run every time when there is a request to create a VM. Scripts can be written for different scenarios. 
 
-### Scripts can be written through Infrastructure Automation tools like:
+**Scripts can be written through Infrastructure Automation tools like:**
 
 1. Aws CLI
 2. Aws API 
@@ -105,21 +102,21 @@ There are different project management models of Software Development.
    - it can be used on multiple cloud platforms
    - Companies nowadays follow a hybrid approach in the utilization of cloud resources/services depending on their requirements
 
-### Now, who can make such a request?
+**Now, who can make such a request?**
   - It should be Valid
   - Authentic (user should have access)
   - Authorized (user had the permission to access)
 
-### To increase efficiency, you can use a terminal on your local machine to access Aws console.
+**To increase efficiency, you can use a terminal on your local machine to access Aws console.**
   - MacOS (iTerm)
   - Windows (MobaXTerm, NoMachine, Putty) 
 
-### How to connect to ec2 console from a remote server using ssh client
+**How to connect to ec2 console from a remote server using ssh client.**
 - ssh -i /home/user/Downloads/mykey.pem ubuntu@54.196.38.161
 - chmod 600 /home/user/Downloads/mykey.pem 
 - ssh -i /home/user/Downloads/mykey.pem ubuntu@54.196.38.161
 
-### After creating an Ec2-instance (django, postgresql)
+**After creating an Ec2-instance (django, postgresql)**
 - sudo apt update && sudo apt upgrade -y
 - sudo apt install python3-pip python3-dev libpq-dev postgresql postgresql-contrib nginx curl
 - sudo apt install python3-virtualenv
@@ -129,7 +126,7 @@ There are different project management models of Software Development.
 
 
 
-### Aws CLI 
+**Aws CLI**
 - msiexec.exe /i https://awscli.amazonaws.com/AWSCLIV2.msi  (to install aws cli)
 - aws --version   (to verify the installation)
 
@@ -137,7 +134,7 @@ There are different project management models of Software Development.
 - read documentation for aws cli commands.
 
 
-### Aws CFT (Cloud formation template)
+**Aws CFT (Cloud formation template)**
 - https://github.com/aws-cloudformation/aws-cloudformation-templates
 - https://github.com/awslabs/aws-cloudformation-template-formatter
 

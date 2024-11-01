@@ -1,5 +1,6 @@
 # Topic __ Git & Github (Version control)
 
+<br>
 
 ### Centralized vs Distributed version control? 
 - Git is a distributed version control system

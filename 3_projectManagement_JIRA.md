@@ -1,5 +1,6 @@
 # Topic __ Project Management, Jira
 
+<br>
 
 ### Waterfall
 - Waterfall is a linear, sequential approach where each phase (requirements, design, development, testing, deployment) must be completed before the next begins.
@@ -18,7 +19,7 @@
 - Integrations with CI/CD tools help track the deployment pipeline, supporting DevOps workflows.
 - 30-day free trial Account
 
-### Jira Workflow & Agile LifeCycle
+**Jira Workflow & Agile LifeCycle**
 - Backlog Refinement (we prioritize the user stories for the current sprint)
 - Sprint Planning
 - Daily Standups

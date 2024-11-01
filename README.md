@@ -1,1 +1,1 @@
-# 30DaysOfDevOps
+# DevOps Essentials

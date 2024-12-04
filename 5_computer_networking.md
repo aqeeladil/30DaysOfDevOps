@@ -1,5 +1,4 @@
 # Networking Fundamentals
-<br>
 
 ## IP Address
 

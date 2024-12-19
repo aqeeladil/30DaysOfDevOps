@@ -4,9 +4,11 @@
 
 An IP address is a unique number assigned to a device within a network to identify it and enable communication. Just as houses have unique addresses, devices in a network need unique IP addresses to track and control access.
 
-#### Types of IP Addressing
+### Types of IP Addressing
 
-1. **IPv4**: IPv4 addresses consist of four bytes (32 bits) represented in the format `X.X.X.X` (e.g., `192.168.0.1`). Each byte (8 bits) ranges from `0–255`. 
+#### 1. IPv4: 
+
+IPv4 addresses consist of four bytes (32 bits) represented in the format `X.X.X.X` (e.g., `192.168.0.1`). Each byte (8 bits) ranges from `0–255`. 
 
 IPv4 can theoretically provide 2³² (4.3 billion) unique addresses. However, some ranges are reserved for private use.
 
@@ -22,11 +24,12 @@ IPv4 can theoretically provide 2³² (4.3 billion) unique addresses. However, so
 - Computers store data in binary.
 - Each octet is 8 bits (1 byte): 2^8 - 1 = 255.
 
-2. **IPv6:** A 128-bit address designed to solve the IPv4 address exhaustion problem. 
+#### 2. IPv6: 
+
+A 128-bit address designed to solve the IPv4 address exhaustion problem. 
 Example: `2001:0db8:85a3:0000:0000:8a2e:0370:7334`.
 
 #### Why Unique Addresses are Needed:
-
 - To monitor specific device activities.
 - To allow/block specific devices from accessing resources or websites.
 

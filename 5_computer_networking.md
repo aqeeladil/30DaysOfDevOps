@@ -2,141 +2,139 @@
 
 ## IP Address
 
-An IP address is a unique number assigned to a device within a network to identify it and enable communication. Just as houses have unique addresses, devices in a network need unique IP addresses to track and control access.
+An IP address is a unique identifier assigned to a device within a network to enable communication. Just as houses have unique addresses, devices in a network require unique IP addresses for identification and data transfer.
 
 ### Types of IP Addressing
 
-#### 1. IPv4: 
+#### 1. IPv4
+IPv4 addresses consist of four bytes (32 bits) represented in the format `X.X.X.X` (e.g., `192.168.0.1`). Each byte (8 bits) ranges from `0–255`.
 
-IPv4 addresses consist of four bytes (32 bits) represented in the format `X.X.X.X` (e.g., `192.168.0.1`). Each byte (8 bits) ranges from `0–255`. 
-
-IPv4 can theoretically provide 2³² (4.3 billion) unique addresses. However, some ranges are reserved for private use.
+IPv4 theoretically provides **2³² (4.3 billion)** unique addresses. However, some ranges are reserved for private use.
 
 **Example:** Decimal to binary conversion.
 ```bash
 172.32.16.1
-172  |  32  |  16  | 1
+172  |  32  |  16  |  1
 128+0+32+0+8+4+0+0 | 0+0+132+0+0+0+0+0  | 0+0+0+16+0+0+0+0  | 0+0+0+0+0+0+1+0
-10101100 | 00100000  | 00010000  | 00000010
+10101100 | 00100000  | 00010000  | 00000001
 ```
 
 **Why only up to 255?**
 - Computers store data in binary.
-- Each octet is 8 bits (1 byte): 2^8 - 1 = 255.
+- Each octet is 8 bits (1 byte): `2^8 - 1 = 255`.
 
-#### 2. IPv6: 
-
-A 128-bit address designed to solve the IPv4 address exhaustion problem. 
+#### 2. IPv6
+IPv6 is a **128-bit** address designed to overcome IPv4 address exhaustion.
 Example: `2001:0db8:85a3:0000:0000:8a2e:0370:7334`.
 
-#### Why Unique Addresses are Needed:
-- To monitor specific device activities.
-- To allow/block specific devices from accessing resources or websites.
-
-_______________________________________________________________________________________________
+### Importance of Unique IP Addresses
+- Monitor device activities.
+- Allow/block specific devices from accessing resources.
 
 ## Subnets and Subnetting
 
-A subnet is a smaller segment of a larger network. Subnetting divides a network into multiple parts to improve security, optimize resource usage (IP addresses are allocated only as needed) and isolate network traffic.
+A **subnet** is a smaller segment of a larger network. **Subnetting** divides a network into multiple segments to enhance security, optimize resource allocation, and isolate network traffic.
 
-**Example Use Case:** In an office network, one subnet can handle finance-related activities with sensitive data. Another can be used for general employee access. If a device in the general subnet is compromised, the sensitive subnet remains secure.
+**Example Use Case:**
+- A company may use one subnet for finance (handling sensitive data) and another for general employees.
+- If an attack occurs in one subnet, others remain protected.
 
-**Types of Subnets:**
-- Private Subnet: No internet access. Example: Internal company resources.
-- Public Subnet: Can access the internet. Example: Web servers.
-
-_______________________________________________________________________________________________
+### Types of Subnets
+- **Private Subnet:** No direct internet access. Example: Internal company servers.
+- **Public Subnet:** Can access the internet. Example: Web servers.
 
 ## CIDR (Classless Inter-Domain Routing) Notation
 
-CIDR is a method to allocate IP addresses efficiently and define the size of a subnet.
+CIDR allocates IP addresses efficiently and defines subnet sizes.
 
-IP Address/Prefix Length (e.g., `192.168.0.0/24`).
+**Format:** `IP Address/Prefix Length` (e.g., `192.168.0.0/24`).
 
-The prefix length (/24) indicates the number of bits reserved for the network. The remaining bits are for host devices. It means, the first 24 bits will remain static, and the remaining 8 bits will be available to the upcoming host traffic on the network.
+- The prefix length (`/24`) indicates the number of bits reserved for the network.
+- The remaining bits are available for host devices.
 
-Example:
+**Calculating IP Addresses from CIDR:**
 ```bash
+Number of IPs = 2 ^ (32 - prefix length)
+
+
 /24 = 256 addresses (2^8).
+
+/26 = 64 addresses (2^6).
 
 /30 = 4 addresses (2^2).
 ```
 
-**Calculating Addresses from CIDR:**
+### Example Use Cases
+**1. Allocating Subnets in a Large Network**
 ```bash
-Number of IPs = 2 ^ (32 − prefix length)
- 
-/26 → 32 − 26 = 6, 2^6 =64 addresses.
-```
-
-**Use Case: 1**
-```bash
-A network has 65,000 IPs and needs two subnets:
-
-# Finance Subnet: Requires 256 IPs.
+Finance Subnet: Requires 256 IPs.
 IPs: 192.168.1.0 – 192.168.1.255.
-CIDR: 192.168.1.0/24.
-
-# General Subnet: Needs remaining IPs.
-Remaining IPs.
+CIDR: 192.168.1.0/24
 ```
-
-Use Case: 2
-```bash
-# Restricting Private IPs
-
+**2. Restricting Private IPs**
 Use private IP ranges:
-10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16.
-
-Avoid public ranges (e.g., 8.8.8.8 is Google’s public DNS).
-```
-______________________________________________________________________________________________
+- `10.0.0.0/8`
+- `172.16.0.0/12`
+- `192.168.0.0/16`
 
 ## Ports
 
-A port is a communication endpoint for applications on a device. Different applications on the same device use different ports to avoid conflicts.
+A **port** is a communication endpoint for applications. Different applications use different ports to avoid conflicts.
 
-**Port Range**
-- Well-Known Ports: 0–1023 (Reserved for standard services (e.g., HTTP on 80, HTTPS on 443)).
-- Registered Ports: 1024–49151 (Used by third-party apps).
-- Dynamic/Private Ports: 49152–65535 (Temporary ports for client-side apps).
+### Port Ranges
+- **Well-Known Ports (0–1023):** Reserved for standard services (e.g., HTTP: 80, HTTPS: 443).
+- **Registered Ports (1024–49151):** Used by third-party apps.
+- **Dynamic/Private Ports (49152–65535):** Temporary ports for client-side applications.
 
-**Common Ports:**
-- HTTP: Port 80
-- HTTPS: Port 443
-- MySQL: Port 3306
-- Custom Applications: Ports like 9000, 8080.
+### Common Ports
+| Service  | Port  |
+|----------|-------|
+| HTTP     | 80    |
+| HTTPS    | 443   |
+| MySQL    | 3306  |
+| Custom Apps | 9000, 8080 |
 
-**Accessing Applications via IP and Port:**
-- Public IP: 192.168.0.10
-- Application Port: 8080
-- Access URL: 192.168.0.10:8080
+### Accessing Applications via IP and Port
+```bash
+Public IP: 192.168.0.10
+Application Port: 8080
+Access URL: http://192.168.0.10:8080
+```
 
-______________________________________________________________________________________________
+## DNS Resolution
 
-## DNS Resolution:
+The **Domain Name System (DNS)** maps domain names to IP addresses.
 
-The Domain Name System (DNS) maps human-readable domain names (e.g., `www.google.com`) to their corresponding IP addresses (e.g., `8.8.8.8`).
+### How DNS Works:
+1. Browser/router checks local cache.
+2. If not found, it queries the ISP’s DNS server.
+3. The ISP’s DNS server retrieves the correct IP address.
+4. The request proceeds if the domain is valid.
 
-The browser/router checks the local cache for a record. If not found, it queries the Internet Service Provider (ISP)'s DNS server. This ensures the domain exists and is associated with an IP address. Without a successful DNS resolution, the request cannot proceed.
+## TCP Handshake
 
-____________________________________________________________________________________________
+A **three-way handshake** establishes a reliable connection between a client and a server.
+1. **SYN**: Client requests a connection.
+2. **SYN-ACK**: Server acknowledges.
+3. **ACK**: Client confirms.
 
-## TCP Handshake:
-
-A three-way handshake ensures a reliable connection between the client and the server.
-
-- Client sends a "SYN" (synchronize) message. 
-- Server responds with "SYN-ACK" (synchronize-acknowledge) to show readiness.
-- Client replies with "ACK" (acknowledge).
-- Once completed, the client and server are ready to exchange data.
-- If the handshake fails, the connection cannot be established.
-
-___________________________________________________________________________________________
+If any step fails, the connection cannot be established.
 
 ## OSI Model
 
-The OSI (Open Systems Interconnection) model is a conceptual framework used to understand how data is transferred over a network. It divides the process of communication between devices into seven layers, each with distinct responsibilities.
+The **OSI (Open Systems Interconnection) model** explains how data is transferred over a network through **seven layers**.
+
+### OSI Layers Explained
+
+| Layer | Name                | Function |
+|-------|---------------------|----------|
+| 7     | Application Layer   | User interaction, HTTP, FTP, SMTP |
+| 6     | Presentation Layer  | Data encryption & formatting (e.g., SSL/TLS) |
+| 5     | Session Layer       | Manages sessions between applications |
+| 4     | Transport Layer     | Ensures data integrity (TCP/UDP) |
+| 3     | Network Layer       | Logical addressing (IP) and routing |
+| 2     | Data Link Layer     | MAC addressing, error detection |
+| 1     | Physical Layer      | Physical transmission of data |
 
 ```bash
 # Layer 7: Application Layer
@@ -191,19 +189,18 @@ Layer 4: TCP ensures all data segments are received and reassembled.
 Layer 5-7: The server decrypts the data, validates the session, and processes the HTTP request.
 ```
 
-________________________________________________________________________________________
+### OSI vs. TCP/IP Model
 
-## OSI vs. TCP/IP Model
+The **TCP/IP model** simplifies OSI:
 
-The TCP/IP model simplifies the OSI model by combining certain layers:
-- **Application Layer:** Combines OSI Layers 5, 6, and 7.
-- **Transport Layer:** Equivalent to OSI Layer 4.
-- **Internet Layer:** Equivalent to OSI Layer 3.
-- **Network Access Layer:** Combines OSI Layers 1 and 2.
+| OSI Model            | TCP/IP Model       |
+|----------------------|------------------|
+| Application (7, 6, 5) | Application       |
+| Transport (4)        | Transport         |
+| Network (3)         | Internet          |
+| Data Link + Physical (2, 1) | Network Access |
 
-While the TCP/IP model is widely used, understanding the OSI model provides deeper insights into data transmission.
+Understanding OSI helps in diagnosing network issues and securing data transmission.
 
-____________________________________________________________________________________________
-
-
+---
 

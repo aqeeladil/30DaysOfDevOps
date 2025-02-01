@@ -1,162 +1,152 @@
-# Topic __ Git & Github (Version control)
+# Version Control (Git & GitHub)
 
-<br>
+## Centralized vs. Distributed Version Control
 
-### Centralized vs Distributed version control? 
-- Git is a distributed version control system
-- In centralized system like SVN or CVS, there was a single point of failure. If the centralized version-control system goes down, the developers will not be able to share their code with each other. 
-- Distributed Systems like git allows the individual developers to share the copies of their code with others, which we call forking.
-- Github is a cloud storage platform for storing the project code.
+- **Git** is a **distributed** version control system.
+- In **centralized** systems like SVN or CVS, there is a **single point of failure**. If the centralized server goes down, developers cannot share code.
+- **Distributed systems** like Git allow individual developers to maintain copies of the repository, enabling collaboration without dependency on a central server.
+- **GitHub** is a cloud-based platform for hosting Git repositories.
 
+## Git Branching Strategy
 
-### Git useful commands
-- git init
-- git add test.txt
-- git status
-- git commit -m 'First commit'
-- git diff
-- git log
-- git reset --hard <commit id>
-- git push -u origin main
+Let's consider a **calculator app** with basic functionalities (add, subtract, multiply, divide). Now, if you want to add a **percentage feature**, you would:
+1. Create a **new branch**.
+2. Develop and test the feature in the new branch.
+3. Merge the branch into the `main/master` branch.
 
+### Common Branch Types:
 
-### Git Branching Strategy 
-- Kubernetes repo has close to 3300 contributors.
-https://github.com/kubernetes/kubernetes
+- **Master/Main Branch**:
+  - Used for active development and must always be up-to-date.
+- **Feature Branch**:
+  - Developers use this branch to work on new features before merging them into `main`.
+- **Release Branch**:
+  - A stable branch, derived from `main`, used to prepare for production release.
+- **Hotfix Branch**:
+  - Used to quickly fix bugs in production.
 
-- Lets consider a calculator app with functionalities (add, sub, mul, div). and now you want to add some new feature like percentage. For this, you will create a new branch , write code created to percentage feature in it, test it and then merge it into main/master branch of calculator app.
+## Useful Git Commands
 
-1. Master Branch:
-   - It is for active development. It must be kept up-to-date
-2. Featured Branches: 
-   - Where developers work on new features. and when testing is done, they merge with the master branch.
-3. Release Branch:
-   - It is the branch which is the latest updated version of master branch & which is delivered to the customer.
-4. Hot-fix Branch:
-   - When customer faces some issue and you had to immediately fix them
+### Basic Setup
+```bash
+git --version  # Check installed Git version
+git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"
+git config --list  # View Git configuration
+```
 
+### Initializing a Repository
+```bash
+echo "# Project Title" >> README.md  # Create README
+touch .gitignore  # Create .gitignore file
+git init  # Initialize Git repository
+git add .  # Stage all changes
+git status  # Check status of changes
+git commit -m "Initial commit"  # Commit changes
+git branch -M main  # Rename default branch to 'main'
+```
 
-### Thanks to freeCodeCamp community for this resource 
-https://www.freecodecamp.org/news/git-and-github-for-beginners/
- 
-- git --version
-- git config --global user.name "aqeeladil"
-- git config --global user.email "aqeel.adil17@gmail.com"
-- git config --list
-- echo "# mytodolist" >> README.md
-- touch .gitignore    
- 
-- git init   
-- git add .   
-- git status 
-- git commit -m "Initial commit"  
-- git branch -M main  (it renames the branch's name to "main". The default branch might be created as "master", but "main" is the standard name for this repo now )
+### Connecting to Remote Repository
+```bash
+ssh-keygen -t rsa -b 4096 -C "your.email@example.com"  # Generate SSH key for authentication
+git remote add origin <github_ssh_url>  # Connect local repo to GitHub
+git remote -v  # Verify remote repository
+git push -u origin main  # Push changes to GitHub
+```
 
+### Cloning a Repository
+```bash
+git clone <github_https_url>  # Clone a repo
+git clone <github_https_url> <folder_name>  # Clone into a specific folder
+```
 
-- ssh -keygen -t rsa -b 4096 -C "aqeel.adil17@gmail.com"    (You may need to add thsi step if you are a windows user and your repo is in Private mode. In the end, copy the public key and paste it to the github profile ssh key section.)
-- git remote add origin <github_ssh_path>  
-- git remote -v 
-- git push origin main  
-- git push -u origin main  
+### Working with Branches
+```bash
+git branch  # List branches
+git branch <branch_name>  # Create a new branch
+git checkout <branch_name>  # Switch to a branch
+git checkout -b <branch_name>  # Create and switch to a new branch
+```
 
+### Merging and Rebasing
+```bash
+git merge <branch_name>  # Merge specified branch into current branch
+git rebase <branch_name>  # Reapply commits on top of another base branch
+git cherry-pick <commit_hash>  # Apply a specific commit from another branch
+```
 
-### In case you cloned the repo from github to local machine
-- git clone <github_https_path> 
-- git add <file_name>
-- git commit -m "Initial commit"
+### Deleting Branches
+```bash
+git branch -d <branch_name>  # Delete a branch locally
+git push origin --delete <branch_name>  # Delete a branch from remote
+```
 
-### you can simply use : "git push origin", this will push it to its default branch
-- git push origin main    
+### Fetching and Pulling
+```bash
+git fetch origin  # Fetch changes from remote without merging
+git merge origin/main  # Merge fetched changes into the current branch
+git pull origin main  # Fetch and merge changes in one step
+```
 
+### Comparing and Viewing History
+```bash
+git log  # View commit history
+git log --oneline  # View commit history in a compact format
+git log <branch_name>  # View commit history of a specific branch
+git diff <branch_name>  # Compare changes between branches
+```
 
-### EXTRAS
+### Undoing Changes
+#### Case 1: Undo Staged Changes (Not Committed Yet)
+```bash
+git reset <file_name>  # Unstage a file
+git reset  # Unstage all files
+```
+#### Case 2: Undo Committed Changes
+```bash
+git reset HEAD~1  # Move back one commit
+git reset <commit_hash>  # Move back to a specific commit
+git reset --hard <commit_hash>  # Remove changes from Git and local setup
+```
 
-- git clone <github_https_path>   #to clone any remote github repo into our local machine
-- git clone <github_https_path> </folder_name>     #Clone the repository to a folder:
-- git log     #To view the history of commits for a repository, you can use the log command:
-- git log branch_name   # to view branch specific commit history
-- git log --oneline
-- git command -help   #See all the available options for the specific command
-- git status help    #Show the possible options for the status command in command line:
-- git help --all     #See all possible command
-- git add -A     #Stage all new, modified, and deleted files. Use the shorthand command
-- git commit -a -m "initial commit" #Commit the updated files directly, skipping the staging environment:   #"-a" can be used before "-m" to directly commit an updated file without repeating the whole process of "git add" 
-- git status --short   #Check the compact version of the status for repository
-- git branch            #to check the existing branches
-- git branch <branch_name>   #to create a new branch 
-- git checkout child1    # to switch to the child branch
-- git checkout -b child2    # Using the -b option on checkout will create a new branch, and move to it, if it does not exist
-- git cherry-pick <commit_hash>   # to merge a specific commit
-- git rebase 
-- git merge child2     #merge the current branch (main) with child2:
+### Reverting Commits
+```bash
+git revert HEAD  # Revert latest commit
+git revert HEAD~1  # Revert the last two commits
+git commit --amend -m "Updated commit message"  # Modify last commit message
+```
 
+## Additional Git Concepts
 
-### Question: git merge vs git rebase vs git cherry-pick 
-- with git merge, commit changes of current branch got updated after the main branch commits.
-- with git rebase, commit changes of current branch got updated before the main branch commits.
-- git cherry-pick is only helpful when u want to merge 1 or 2 commits. 
+### Merge vs. Rebase vs. Cherry-Pick
+- **Merge**: Integrates changes from one branch into another, preserving commit history.
+- **Rebase**: Moves commits to the top of the main branch, keeping a linear history.
+- **Cherry-Pick**: Selectively applies individual commits to another branch.
 
-###
-- git branch -d child2 (to delete child2 branch from the local repository)
-- git fetch origin  (updates our local repo) (Get all the change history of the origin for this branch)
-- git merge origin/main  (it merge's our local branch with the origin-main branch that exists on github)
-- git pull origin    (pull is a combination of fetch and then merge. It is used to pull all changes from a remote repository into the branch you are working on.)
-- git branch -r   #remote branches only
-- git branch -a    #List all local and remote branches of the current Git.
-- git diff <branch_name>    #to compare commits, branches, files & more
-- git merge <branch_name>   #to merge two branches . t will merge this given branch with our current branch
-- git pull origin main    #to fetch and download content from a remote repo & immediately update the local repo to match that content
-- git push origin   #push the current branch to its default remote origin:
+### Working with Remote Repositories
+```bash
+git remote rename origin upstream  # Rename remote repository
+git remote set-url origin git@new_url.com:user/repo.git  # Change remote URL
+git branch -r  # View remote branches
+git branch -a  # View all local and remote branches
+```
 
-- git remote rename origin upstream
-- *.temp      #In .gitignore add a line to ignore all .temp files
-- temp/       #In .gitignore add a line to ignore all files in any directory named temp:
-- temp?.log   #In .gitignore add a single line to ignore all files named temp1.log, temp2.log, and temp3.log:
-- *.log
-- !main.log   #In .gitignore, ignore all .log files, except main.log:
-- git remote set-url origin git@abc.com:x/y.git    #Replace the remote URL for origin with x/y.git on abc.com using SSH:
-- git log --oneline     #Show the log of the repository, showing just 1 line per commit:
-- git revert HEAD   #revert the latest commit:
-- git revert HEAD --no-edit   #revert the latest commit, skipping the commit message editor:
-- git revert HEAD~1    #revert the two last commits:
-- git reset abc123   #reset to the commit with the hash abc1234
-- git commit --amend -m "Update index"
+## Git Ignore Examples
+```gitignore
+*.temp  # Ignore all .temp files
+temp/  # Ignore all files in any directory named 'temp'
+temp?.log  # Ignore temp1.log, temp2.log, temp3.log, etc.
+*.log
+!main.log  # Ignore all .log files except main.log
+```
 
+## Key Git Concepts
+- **Pull Requests (PRs)**: Propose changes to a repository before merging.
+- **Merge Conflicts**: Resolve conflicts when merging branches.
+- **Forking**: Creates an independent copy of a repository.
+- **Clone vs. Fork**:
+  - **Clone**: Copies a repository for local use.
+  - **Fork**: Creates a separate version of a repository on GitHub, useful for contributing to open-source projects.
 
+---
 
-
-### UNDOING CHANGES IN GIT
-
-### Case-1 - Staged Changes (which are added but not commited yet)
-- git reset <file_name>
-- git reset  #this command applies on all files
-
-### Case-2 - Commited Changes (for one commit)
-- git reset HEAD-1   #HEAD is the latest commit in git. '1' means go one step back
-
-### Case3 - Commited changes (for many commits)
-- git reset <commt hash>   #move back to this commit  #every commit has a unique hash
-- git reset --hard <commt hash>    #this command not only removes the changes from github/git, but also from our local vsCode setup 
-
-
-### Extras
-- PULL REQUESTS
-- MERGE CONFLICTS
-- FORK (fork is a rough copy of original repo. It is a new repo that shares code & visibility settings with the original upstream repo)
-- Clone vs Fork ?
-
-<br>
-
-### Lecture Snaps
-![screen](snaps/vc-1.png)
-<br>
-![screen](snaps/vc-2.png)
-<br>
-![screen](snaps/vc-3.png)
-<br>
-![screen](snaps/vc-4.png)
-<br>
-![screen](snaps/vc-5.png)
-<br>
-![screen](snaps/vc-6.png)
-<br>
